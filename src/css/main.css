@@ -1,0 +1,421 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
+
+* {
+    font-family: "Open Sans", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 16px;
+    color: #e5e5e5;
+}
+
+[contenteditable="true"] {
+    outline: none;
+    border: none;
+}
+
+header {
+    position: relative;
+    width: 100%;
+    height: 44px;
+    background-color: #282828;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-search {
+    position: relative;
+    height: 2.3rem;
+    display: flex;
+    align-items: center;
+    width: 300px;
+}
+
+.form-search:focus,
+.form-search:hover {
+    color: #fff;
+}
+
+.form-search input {
+    color: inherit;
+    font-size: 1.3rem;
+    font-weight: 400;
+    height: 100%;
+    width: 100%;
+    padding-left: 2.4rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    background-color: #363636;
+}
+
+.form-search #btn-search {
+    color: inherit;
+    position: absolute;
+    top: 50%;
+    left: 0.3rem;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.form-search #btn-search svg {
+    display: flex;
+}
+
+.perfil {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: 30px;
+    top: 7.5px;
+    border-radius: 100%;
+    background-color: red;
+}
+
+/* MAIN */
+.container {
+    display: block;
+    min-height: 100vh;
+    background-color: #202020;
+}
+
+.content {
+    margin: 0 auto;
+    padding: 0 55px;
+    width: calc(100% - 400px);
+    min-width: 300px;
+}
+
+@media screen and (max-width: 768px) {
+    .content {
+        padding: 0;
+        width: calc(100% - 200px);
+    }
+}
+
+.container-dia {
+    padding-top: 36px;
+}
+
+.container-dia .dia {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 25px;
+}
+
+.container-dia .dia-extenso {
+    color: #808080;
+    margin-left: 6px;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+/* AVISO */
+.aviso {
+    text-align: center;
+    font-size: 12px;
+    color: #808080;
+    margin-top: 20px;
+}
+
+/* TAREFAS */
+.container-tarefas {
+    margin-top: 16px;
+}
+
+.tarefas {
+    list-style: none;
+}
+
+.tarefas-item {
+    display: flex;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: default;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.tarefas-item:hover {
+    background-color: #363636;
+}
+
+.tarefas-item:hover .tarefa-acoes {
+    opacity: 1;
+}
+
+/* -- CHECKBOX -- */
+.tarefa-checkbox button {
+    background: transparent;
+    padding: 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-top: 6px;
+}
+
+.tarefa-checkbox button .tarefa-checkbox-circulo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #7f7f7f;
+    height: 20px;
+    width: 20px;
+    border: 1px solid #7f7f7f;
+    border-radius: 50%;
+}
+
+.tarefa-checkbox button .tarefa-checkbox-circulo svg {
+    color: inherit;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-left: -6px;
+    margin-top: -6px;
+    transition: opacity 0.3s;
+    opacity: 0;
+}
+
+.tarefa-checkbox button.checked .tarefa-checkbox-circulo {
+    background-color: transparent;
+    animation: checkbox-completo 0.25s linear forwards;
+}
+
+.tarefa-checkbox button:hover .tarefa-checkbox-circulo svg,
+.tarefa-checkbox button.checked .tarefa-checkbox-circulo svg {
+    opacity: 1;
+}
+
+@keyframes checkbox-completo {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.25);
+        background-color: grey;
+    }
+
+    to {
+        transform: scale(1);
+        background-color: grey;
+        color: #fff;
+        opacity: 1;
+    }
+}
+
+/* /-- CHECKBOX /-- */
+
+.tarefa-conteudo {
+    margin-left: 10px;
+    width: 100%;
+}
+
+.tarefa-titulo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tarefa-titulo span {
+    flex: 1;
+    font-size: 14px;
+    line-height: 21px;
+    word-wrap: break-word;
+}
+
+.tarefa-acoes {
+    opacity: 0;
+}
+
+.tarefa-acoes button {
+    min-width: 24px;
+    color: #e5e5e5;
+    border-radius: 3px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.tarefa-acoes button:first-child {
+    margin-right: 5px;
+}
+
+.tarefa-acoes button:hover {
+    background-color: #4d4d4d;
+    color: #dd4b39;
+}
+
+.tarefa-descricao {
+    color: #808080;
+    font-size: 12px;
+    line-height: 18px;
+    word-wrap: break-word;
+    word-break: break-all;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #808080;
+}
+
+.nova-tarefa-container {
+    padding: 10px;
+}
+
+.btn-adicionar-tarefa {
+    color: #808080;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.btn-adicionar-tarefa .icon_add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    width: 19px;
+    height: 19px;
+    border-radius: 50%;
+    margin-right: 10px;
+    color: #de4c4a;
+}
+
+.btn-adicionar-tarefa:hover {
+    color: #de4c4a;
+}
+
+.btn-adicionar-tarefa:hover .icon_add {
+    background-color: #de4c4a;
+    color: #fff;
+}
+
+/* MODAL */
+.modal-container {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 2000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-container.mostrar {
+    display: flex;
+}
+
+.modal {
+    background: #1f1f1f;
+    width: 60%;
+    min-width: 300px;
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+}
+
+@keyframes modal {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -60px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.mostrar .modal {
+    animation: modal 0.3s;
+}
+
+.modal form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.modal form .input {
+    color: #e3e3e3;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding-bottom: 10px;
+}
+
+.modal form .input#tarefa-titulo {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.modal form .input#tarefa-descricao {
+    font-size: 12px;
+    color: #808080;
+    resize: vertical;
+    min-height: 50px;
+    max-height: 300px;
+}
+
+.form-acoes {
+    margin-top: 10px;
+    text-align: right;
+}
+
+.form-acoes button {
+    color: #e3e3e3;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.form-acoes button#btn-cancelar {
+    margin-right: 5px;
+    background-color: #292929;
+}
+
+.form-acoes button#btn-cancelar:hover {
+    background-color: #3d3d3d;
+}
+
+.form-acoes button#btn-salvar {
+    background-color: #de4c4a;
+}
+
+.form-acoes button#btn-salvar:hover {
+    background-color: #d33526;
+}
+
+.fechar {
+    color: #e3e3e3;
+    position: absolute;
+    background-color: transparent;
+    font-size: 1.2em;
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.fechar:hover {
+    background-color: #4d4d4d;
+}

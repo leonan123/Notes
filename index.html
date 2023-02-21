@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
+    <link rel="stylesheet" href="src/css/main.css">
+
+    <!-- ICONS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+    <title>Tarefas</title>
+</head>
+
+<body>
+    <!-- <header>
+        <form class="form-search">
+            <div role="button" id="btn-search">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true" class="search_icon">
+                    <path
+                        d="M10.5 3a7.5 7.5 0 015.645 12.438l4.709 4.708a.502.502 0 01-.708.708l-4.708-4.709A7.5 7.5 0 1110.5 3zm0 1a6.5 6.5 0 100 13 6.5 6.5 0 000-13z"
+                        fill="currentColor"></path>
+                </svg>
+            </div>
+            <input type="text" name="search" id="input-search" placeholder="buscar">
+        </form>
+        <div class="perfil">
+            <img src="" alt="">
+        </div>
+    </header> -->
+
+    <main class="container">
+        <section class="content">
+            <div class="container-dia">
+                <h2>
+                    <span class="dia">Aqui estão suas tarefas</span>
+                </h2>
+            </div>
+            <div class="aviso" style="display: block">
+                Ops, parece que você ainda não possui tarefas!
+            </div>
+            <div class="container-tarefas">
+                <ul class="tarefas">
+                </ul>
+            </div>
+
+            <div class="nova-tarefa-container">
+                <button type="button" id="btn-adicionarTarefa" class="btn-adicionar-tarefa">
+                    <span class="icon_add">
+                        <svg width="13" height="13">
+                            <path
+                                d="M6 6V.5a.5.5 0 0 1 1 0V6h5.5a.5.5 0 1 1 0 1H7v5.5a.5.5 0 1 1-1 0V7H.5a.5.5 0 0 1 0-1H6z"
+                                fill="currentColor" fill-rule="evenodd"></path>
+                        </svg>
+                    </span>
+                    Adicionar tarefa
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <div id="adicionarTarefaModal" class="modal-container">
+        <div class="modal">
+            <button class="fechar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="fechar">
+                    <path fill="currentColor"
+                        d="M5.146 5.146a.5.5 0 0 1 .708 0L12 11.293l6.146-6.147a.5.5 0 0 1 .638-.057l.07.057a.5.5 0 0 1 0 .708L12.707 12l6.147 6.146a.5.5 0 0 1 .057.638l-.057.07a.5.5 0 0 1-.708 0L12 12.707l-6.146 6.147a.5.5 0 0 1-.638.057l-.07-.057a.5.5 0 0 1 0-.708L11.293 12 5.146 5.854a.5.5 0 0 1-.057-.638z">
+                    </path>
+                </svg>
+            </button>
+            <form id="form-tarefas">
+                <input type="text" class="input" id="tarefa-titulo" name="titulo" placeholder="Nome da tarefa" required>
+                <textarea role="textarea" class="input" id="tarefa-descricao" name="descricao" required
+                    placeholder="Descrição"></textarea>
+                <div class="form-acoes">
+                    <button id="btn-cancelar" type="button">Cancelar</button>
+                    <button id="btn-salvar" type="submit">Adicionar tarefa</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- JS -->
+    <script src="src/js/main.js"></script>
+</body>
+
+</html>
