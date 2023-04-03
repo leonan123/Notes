@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
 
 * {
+    /* Border-box: incluir o padding e o border na altura e na largura dos elementos */
     font-family: "Open Sans", sans-serif;
     box-sizing: border-box;
     margin: 0;
@@ -10,71 +11,6 @@
 body {
     font-size: 16px;
     color: #e5e5e5;
-}
-
-[contenteditable="true"] {
-    outline: none;
-    border: none;
-}
-
-header {
-    position: relative;
-    width: 100%;
-    height: 44px;
-    background-color: #282828;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.form-search {
-    position: relative;
-    height: 2.3rem;
-    display: flex;
-    align-items: center;
-    width: 300px;
-}
-
-.form-search:focus,
-.form-search:hover {
-    color: #fff;
-}
-
-.form-search input {
-    color: inherit;
-    font-size: 1.3rem;
-    font-weight: 400;
-    height: 100%;
-    width: 100%;
-    padding-left: 2.4rem;
-    font-size: 1rem;
-    border: none;
-    border-radius: 3px;
-    outline: none;
-    background-color: #363636;
-}
-
-.form-search #btn-search {
-    color: inherit;
-    position: absolute;
-    top: 50%;
-    left: 0.3rem;
-    transform: translateY(-50%);
-    cursor: pointer;
-}
-
-.form-search #btn-search svg {
-    display: flex;
-}
-
-.perfil {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    right: 30px;
-    top: 7.5px;
-    border-radius: 100%;
-    background-color: red;
 }
 
 /* MAIN */
@@ -96,23 +32,17 @@ header {
         padding: 0;
         width: calc(100% - 200px);
     }
+
+    .titulo {
+        text-align: center;
+    }
 }
 
-.container-dia {
+.titulo {
     padding-top: 36px;
-}
-
-.container-dia .dia {
     font-size: 20px;
     font-weight: bold;
     line-height: 25px;
-}
-
-.container-dia .dia-extenso {
-    color: #808080;
-    margin-left: 6px;
-    font-size: 12px;
-    font-weight: 400;
 }
 
 /* AVISO */
@@ -172,7 +102,6 @@ header {
 
 .tarefa-checkbox button .tarefa-checkbox-circulo svg {
     color: inherit;
-    display: inline-block;
     width: 18px;
     height: 18px;
     margin-left: -6px;
@@ -181,32 +110,9 @@ header {
     opacity: 0;
 }
 
-.tarefa-checkbox button.checked .tarefa-checkbox-circulo {
-    background-color: transparent;
-    animation: checkbox-completo 0.25s linear forwards;
-}
-
 .tarefa-checkbox button:hover .tarefa-checkbox-circulo svg,
 .tarefa-checkbox button.checked .tarefa-checkbox-circulo svg {
     opacity: 1;
-}
-
-@keyframes checkbox-completo {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.25);
-        background-color: grey;
-    }
-
-    to {
-        transform: scale(1);
-        background-color: grey;
-        color: #fff;
-        opacity: 1;
-    }
 }
 
 /* /-- CHECKBOX /-- */
@@ -216,17 +122,10 @@ header {
     width: 100%;
 }
 
-.tarefa-titulo {
+.tarefa-titulo-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-.tarefa-titulo span {
-    flex: 1;
-    font-size: 14px;
-    line-height: 21px;
-    word-wrap: break-word;
 }
 
 .tarefa-acoes {
@@ -240,9 +139,6 @@ header {
     background-color: transparent;
     border: none;
     cursor: pointer;
-}
-
-.tarefa-acoes button:first-child {
     margin-right: 5px;
 }
 

@@ -6,10 +6,11 @@ const btnEditTarefa = document.querySelector('.btn-editar')
 const btnCancelar = document.querySelector('#btn-cancelar')
 const modal = document.getElementById('adicionarTarefaModal')
 const aviso = document.querySelector('.aviso')
-const dados = [];
+const inputs = [...form.elements].filter(elemento => elemento.tagName !== "BUTTON")
+var dados = [];
 
 btnCancelar.addEventListener('click', () => {
-    [...form.elements].forEach(el => {
+    inputs.forEach(el => {
         if (el.tagName.toLowerCase() != 'button') {
             el.value = "";
         }
@@ -19,9 +20,7 @@ btnCancelar.addEventListener('click', () => {
     fechaModal(modal)
 })
 
-btnAdicionarTarefa.addEventListener('click', () => {
-    iniciaModal(modal)
-})
+btnAdicionarTarefa.addEventListener('click', () => iniciaModal(modal))
 
 form.addEventListener('submit', (ev) => {
     ev.preventDefault();
@@ -30,7 +29,7 @@ form.addEventListener('submit', (ev) => {
 
         let tarefa = { id: gerarId() };
 
-        [...form.elements].forEach(el => {
+        inputs.forEach(el => {
             if (el.tagName.toLowerCase() != 'button') {
                 tarefa[el.name] = el.value
                 el.value = "";
@@ -46,25 +45,19 @@ form.addEventListener('submit', (ev) => {
 
             if (tarefa.id === form.dataset.tarefaId) {
 
-                let chaves = Object.keys(tarefa); //[id, titulo, descricao]
-
-                [...form.elements].forEach(el => {
+                inputs.forEach(el => {
                     if (el.tagName.toLowerCase() != 'button') {
 
-                        chaves.forEach(chave => {
-
-                            if (el.name === chave) {
-
-                                tarefa[chave] = el.value
-
-                            }
-
-                        })
-
+                        if (tarefa[el.name]) {
+                            tarefa[el.name] = el.value
+                            el.value = "";
+                        }
                     }
                 })
 
                 listaTarefa(tarefa, tarefa.id)
+
+                form.dataset.tarefaId = "";
 
             }
 
@@ -82,8 +75,7 @@ function listaTarefa(tarefa, id = null) {
     if (id) {
 
         const tarefaElement = tarefasList.querySelector(`[data-id="${tarefa.id}"]`);
-
-        tarefaElement.querySelector('.titulo').innerText = tarefa.titulo
+        tarefaElement.querySelector('.tarefa-titulo').innerText = tarefa.titulo
         tarefaElement.querySelector('.tarefa-descricao').innerText = tarefa.descricao
 
     } else {
@@ -91,7 +83,7 @@ function listaTarefa(tarefa, id = null) {
         const listaTarefaHTML = `
         <li class="tarefas-item" data-id="${tarefa.id}">
             <div class="tarefa-checkbox">
-                <button type="button" role="checkbox" id="btn-concluirTarefa" onClick="concluirTarefa(this, '${tarefa.id}')">
+                <button type="button" id="btn-concluirTarefa" onClick="concluirTarefa(this, '${tarefa.id}')">
                     <div class="tarefa-checkbox-circulo">
                         <svg width="24" height="24">
                             <path fill="currentColor"
@@ -102,8 +94,8 @@ function listaTarefa(tarefa, id = null) {
                 </button>
             </div>
             <div class="tarefa-conteudo">
-                <div class="tarefa-titulo">
-                    <span class="titulo">${tarefa.titulo}</span>
+                <div class="tarefa-titulo-container">
+                    <div class="tarefa-titulo">${tarefa.titulo}</div>
                     <div class="tarefa-acoes">
                         <button type="button" class="btn-editar" onClick="editarTarefa('${tarefa.id.trim()}')">
                             <svg width="24" height="24">
@@ -141,6 +133,8 @@ function listaTarefa(tarefa, id = null) {
         tarefasList.innerHTML += listaTarefaHTML
 
     }
+
+    localStorage.setItem('tarefas', JSON.stringify(dados))
 }
 
 function excluirTarefa(id, msgConfirm) {
@@ -159,6 +153,8 @@ function excluirTarefa(id, msgConfirm) {
         if (!dados.length) {
             aviso.style.display = 'block'
         }
+
+        localStorage.setItem('tarefas', JSON.stringify(dados))
 
     }
 }
@@ -179,20 +175,14 @@ function editarTarefa(id) {
 
 function preparaEdicao(tarefa) {
 
-    let chaves = Object.keys(tarefa); //[id, titulo, descricao]
-
-    [...form.elements].forEach(el => {
+    inputs.forEach(el => {
         if (el.tagName.toLowerCase() != 'button') {
 
-            chaves.forEach(chave => {
+            if (tarefa[el.name]) {
 
-                if (el.name === chave) {
+                el.value = tarefa[el.name]
 
-                    el.value = tarefa[chave]
-
-                }
-
-            })
+            }
 
         }
     })
@@ -212,8 +202,8 @@ function concluirTarefa(btn, id) {
 }
 
 function gerarId() {
-    let numeroAleatório = Math.floor(Date.now() * Math.random());
-    let numeroFormatado = numeroAleatório.toString().substring(0, 8) //limite de 8 caracteres
+    let numeroAleatorio = Math.floor(Date.now() * Math.random());
+    let numeroFormatado = numeroAleatorio.toString().substring(0, 8) //limite de 8 caracteres
     return `task_${numeroFormatado}`
 }
 
@@ -230,5 +220,38 @@ function iniciaModal(modal) {
 
 function fechaModal(modal) {
     modal.classList.remove('mostrar');
+
+    form.dataset.tarefaId = "";
+
+    inputs.forEach(el => {
+        if (el.tagName.toLowerCase() != 'button') {
+
+            el.value = ""
+
+        }
+
+    })
+
 }
+document.addEventListener('DOMContentLoaded', () => {
+
+    const tarefas = JSON.parse(localStorage.getItem('tarefas'))
+
+    dados = []
+
+    if (tarefas.length) {
+
+        for (let tarefa of tarefas) {
+
+            dados.push(tarefa)
+            listaTarefa(tarefa)
+
+
+        }
+
+        aviso.style.display = 'none'
+
+    }
+
+})
 

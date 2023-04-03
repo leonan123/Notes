@@ -6,43 +6,70 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS -->
-    <link rel="stylesheet" href="src/css/main.css">
-
-    <!-- ICONS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="main.css">
 
     <title>Tarefas</title>
 </head>
 
 <body>
-    <!-- <header>
-        <form class="form-search">
-            <div role="button" id="btn-search">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true" class="search_icon">
-                    <path
-                        d="M10.5 3a7.5 7.5 0 015.645 12.438l4.709 4.708a.502.502 0 01-.708.708l-4.708-4.709A7.5 7.5 0 1110.5 3zm0 1a6.5 6.5 0 100 13 6.5 6.5 0 000-13z"
-                        fill="currentColor"></path>
-                </svg>
-            </div>
-            <input type="text" name="search" id="input-search" placeholder="buscar">
-        </form>
-        <div class="perfil">
-            <img src="" alt="">
-        </div>
-    </header> -->
 
     <main class="container">
         <section class="content">
-            <div class="container-dia">
-                <h2>
-                    <span class="dia">Aqui estão suas tarefas</span>
-                </h2>
-            </div>
-            <div class="aviso" style="display: block">
+            <h2 class="titulo">
+                Aqui estão suas tarefas
+            </h2>
+            <div class="aviso">
                 Ops, parece que você ainda não possui tarefas!
             </div>
             <div class="container-tarefas">
                 <ul class="tarefas">
+                    <!-- <li class="tarefas-item">
+                        <div class="tarefa-checkbox">
+                            <button type="button" id="btn-concluirTarefa">
+                                <div class="tarefa-checkbox-circulo">
+                                    <svg width="24" height="24">
+                                        <path fill="currentColor"
+                                            d="M11.23 13.7l-2.15-2a.55.55 0 0 0-.74-.01l.03-.03a.46.46 0 0 0 0 .68L11.24 15l5.4-5.01a.45.45 0 0 0 0-.68l.02.03a.55.55 0 0 0-.73 0l-4.7 4.35z">
+                                        </path>
+                                    </svg>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="tarefa-conteudo">
+                            <div class="tarefa-titulo-container">
+                                teste
+                                <div class="tarefa-acoes">
+                                    <button type="button" class="btn-editar">
+                                        <svg width="24" height="24">
+                                            <g fill="none" fill-rule="evenodd">
+                                                <path fill="currentColor" d="M9.5 19h10a.5.5 0 110 1h-10a.5.5 0 110-1z">
+                                                </path>
+                                                <path stroke="currentColor"
+                                                    d="M4.42 16.03a1.5 1.5 0 00-.43.9l-.22 2.02a.5.5 0 00.55.55l2.02-.21a1.5 1.5 0 00.9-.44L18.7 7.4a1.5 1.5 0 000-2.12l-.7-.7a1.5 1.5 0 00-2.13 0L4.42 16.02z">
+                                                </path>
+                                            </g>
+                                        </svg>
+                                    </button>
+                                    <button type="button" class="btn-excluir">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                                            <g fill="none" fill-rule="evenodd">
+                                                <path d="M0 0h24v24H0z"></path>
+                                                <rect width="14" height="1" x="5" y="6" fill="currentColor" rx=".5">
+                                                </rect>
+                                                <path fill="currentColor" d="M10 9h1v8h-1V9zm3 0h1v8h-1V9z"></path>
+                                                <path stroke="currentColor"
+                                                    d="M17.5 6.5h-11V18A1.5 1.5 0 0 0 8 19.5h8a1.5 1.5 0 0 0 1.5-1.5V6.5zm-9 0h7V5A1.5 1.5 0 0 0 14 3.5h-4A1.5 1.5 0 0 0 8.5 5v1.5z">
+                                                </path>
+                                            </g>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="tarefa-descricao">
+                                Alguma descrição qualquer
+                            </div>
+                        </div>
+                    </li> -->
                 </ul>
             </div>
 
@@ -82,7 +109,7 @@
         </div>
     </div>
     <!-- JS -->
-    <script src="src/js/main.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>
