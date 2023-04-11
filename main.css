@@ -1,5 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
 
+:root {
+    --cor-texto-primario: #e5e5e5;
+    --cor-texto-secundario: #808080;
+    --cor-texto-vermelho: #dd4b39;
+    --cor-fundo: #202020;
+    --cor-fundo-hover: #363636;
+}
+
 * {
     /* Border-box: incluir o padding e o border na altura e na largura dos elementos */
     font-family: "Open Sans", sans-serif;
@@ -10,14 +18,14 @@
 
 body {
     font-size: 16px;
-    color: #e5e5e5;
+    color: var(--cor-texto-primario);
 }
 
 /* MAIN */
 .container {
     display: block;
     min-height: 100vh;
-    background-color: #202020;
+    background-color: var(--cor-fundo);
 }
 
 .content {
@@ -49,7 +57,7 @@ body {
 .aviso {
     text-align: center;
     font-size: 12px;
-    color: #808080;
+    color: var(--cor-texto-secundario);
     margin-top: 20px;
 }
 
@@ -72,7 +80,7 @@ body {
 }
 
 .tarefas-item:hover {
-    background-color: #363636;
+    background-color: var(--cor-fundo-hover);
 }
 
 .tarefas-item:hover .tarefa-acoes {
@@ -93,10 +101,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #7f7f7f;
+    color: var(--cor-texto-secundario);
     height: 20px;
     width: 20px;
-    border: 1px solid #7f7f7f;
+    border: 1px solid var(--cor-texto-secundario);
     border-radius: 50%;
 }
 
@@ -134,7 +142,7 @@ body {
 
 .tarefa-acoes button {
     min-width: 24px;
-    color: #e5e5e5;
+    color: var(--cor-texto-primario);
     border-radius: 3px;
     background-color: transparent;
     border: none;
@@ -143,18 +151,17 @@ body {
 }
 
 .tarefa-acoes button:hover {
-    background-color: #4d4d4d;
-    color: #dd4b39;
+    color: var(--cor-texto-vermelho);
 }
 
 .tarefa-descricao {
-    color: #808080;
+    color: var(--cor-texto-secundario);
     font-size: 12px;
     line-height: 18px;
     word-wrap: break-word;
     word-break: break-all;
     padding-bottom: 10px;
-    border-bottom: 1px solid #808080;
+    border-bottom: 1px solid var(--cor-texto-secundario);
 }
 
 .nova-tarefa-container {
@@ -162,7 +169,7 @@ body {
 }
 
 .btn-adicionar-tarefa {
-    color: #808080;
+    color: var(--cor-texto-secundario);
     font-size: 12px;
     display: flex;
     align-items: center;
@@ -183,16 +190,16 @@ body {
     height: 19px;
     border-radius: 50%;
     margin-right: 10px;
-    color: #de4c4a;
+    color: var(--cor-texto-vermelho);
 }
 
 .btn-adicionar-tarefa:hover {
-    color: #de4c4a;
+    color: var(--cor-texto-vermelho);
 }
 
 .btn-adicionar-tarefa:hover .icon_add {
-    background-color: #de4c4a;
-    color: #fff;
+    background-color: var(--cor-texto-vermelho);
+    color: var(--cor-texto-primario);
 }
 
 /* MODAL */
@@ -245,7 +252,7 @@ body {
 }
 
 .modal form .input {
-    color: #e3e3e3;
+    color: var(--cor-texto-primario);
     background-color: transparent;
     border: none;
     outline: none;
@@ -259,7 +266,7 @@ body {
 
 .modal form .input#tarefa-descricao {
     font-size: 12px;
-    color: #808080;
+    color: var(--cor-texto-secundario);
     resize: vertical;
     min-height: 50px;
     max-height: 300px;
@@ -271,7 +278,7 @@ body {
 }
 
 .form-acoes button {
-    color: #e3e3e3;
+    color: var(--cor-texto-primario);
     font-weight: 700;
     font-size: 12px;
     padding: 6px 12px;
@@ -295,11 +302,11 @@ body {
 }
 
 .form-acoes button#btn-salvar:hover {
-    background-color: #d33526;
+    background-color: var(--cor-texto-vermelho);
 }
 
 .fechar {
-    color: #e3e3e3;
+    color: var(--cor-texto-primario);
     position: absolute;
     background-color: transparent;
     font-size: 1.2em;
@@ -313,5 +320,5 @@ body {
 }
 
 .fechar:hover {
-    background-color: #4d4d4d;
+    background-color: var(--cor-fundo-hover);
 }

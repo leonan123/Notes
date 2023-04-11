@@ -6,14 +6,12 @@ const btnEditTarefa = document.querySelector('.btn-editar')
 const btnCancelar = document.querySelector('#btn-cancelar')
 const modal = document.getElementById('adicionarTarefaModal')
 const aviso = document.querySelector('.aviso')
-const inputs = [...form.elements].filter(elemento => elemento.tagName !== "BUTTON")
-var dados = [];
+const inputs = document.querySelectorAll('form .input')
+let dados = [];
 
 btnCancelar.addEventListener('click', () => {
     inputs.forEach(el => {
-        if (el.tagName.toLowerCase() != 'button') {
-            el.value = "";
-        }
+        el.value = "";
     })
 
     btnSalvar.innerText = "Adicionar tarefa"
@@ -30,10 +28,8 @@ form.addEventListener('submit', (ev) => {
         let tarefa = { id: gerarId() };
 
         inputs.forEach(el => {
-            if (el.tagName.toLowerCase() != 'button') {
-                tarefa[el.name] = el.value
-                el.value = "";
-            }
+            tarefa[el.name] = el.value
+            el.value = "";
         })
 
         dados.push(tarefa)
@@ -46,13 +42,12 @@ form.addEventListener('submit', (ev) => {
             if (tarefa.id === form.dataset.tarefaId) {
 
                 inputs.forEach(el => {
-                    if (el.tagName.toLowerCase() != 'button') {
 
-                        if (tarefa[el.name]) {
-                            tarefa[el.name] = el.value
-                            el.value = "";
-                        }
+                    if (tarefa[el.name]) {
+                        tarefa[el.name] = el.value
+                        el.value = "";
                     }
+
                 })
 
                 listaTarefa(tarefa, tarefa.id)
@@ -176,13 +171,9 @@ function editarTarefa(id) {
 function preparaEdicao(tarefa) {
 
     inputs.forEach(el => {
-        if (el.tagName.toLowerCase() != 'button') {
+        if (tarefa[el.name]) {
 
-            if (tarefa[el.name]) {
-
-                el.value = tarefa[el.name]
-
-            }
+            el.value = tarefa[el.name]
 
         }
     })
@@ -202,7 +193,7 @@ function concluirTarefa(btn, id) {
 }
 
 function gerarId() {
-    let numeroAleatorio = Math.floor(Date.now() * Math.random());
+    let numeroAleatorio = Math.floor(Date.now() * Math.random()); //Arredonda para baixo um número inteiro
     let numeroFormatado = numeroAleatorio.toString().substring(0, 8) //limite de 8 caracteres
     return `task_${numeroFormatado}`
 }
@@ -224,12 +215,7 @@ function fechaModal(modal) {
     form.dataset.tarefaId = "";
 
     inputs.forEach(el => {
-        if (el.tagName.toLowerCase() != 'button') {
-
-            el.value = ""
-
-        }
-
+        el.value = ""
     })
 
 }
